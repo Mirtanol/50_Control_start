@@ -62,10 +62,10 @@ export class BoardTic extends Board<GameTic> {
     ]
 
     private checkWin() {
-        // TODO
-        // Если имеется комбинация из трех одинаковых символов "X" или "0" 
-        //  в линию - возвращает этот символ
-        // Иначе возвращает символ "_"
+        for (const line of (BoardTic as any).winPos as number[][]) {
+            const [a, b, c] = this.getLineChar(line)
+            if (a !== "_" && a === b && b === c) return a
+        }
         return "_"
     }
 
