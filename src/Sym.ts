@@ -5,9 +5,8 @@ export class Sym<T extends GameType> {
     private field: string = ""
 
     constructor(sym: string = "_") {
-        // TODO
-        // Вызывает checkSym (которая будет перегружана в наследниках)
-        // Если checkSym возвращает false, выбрасывает исключение SymError  
+        if (!this.checkSym(sym)) throw SymError
+        this.field = sym 
     }
 
     make(sym: string): Sym<T> {
