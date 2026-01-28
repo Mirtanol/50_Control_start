@@ -37,12 +37,9 @@ export class BoardTic extends Board<GameTic> {
         )
     }
 
-    clone(): BoardTic {
-        // TODO
-        // Функция должна вернуть копию объекта
-        // Если init, то дополнительно инициализируются
-        //  статические поля класса
-        return this
+    clone(init: boolean = false): BoardTic {
+        const copy = this.cells.map((c) => new SymTic(c.sym))
+        return new BoardTic(copy, init)
     }
 
     private getLineChar(line: number[]): string[] {
