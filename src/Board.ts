@@ -25,11 +25,7 @@ export abstract class Board<T extends GameType>{
     abstract clone(): Board<T>     
 
     isFill(): boolean {
-        // TODO
-        // Возвращет true если на доске нет пустых клеток
-        // Реомендуется реализация без циклов,
-        //  с использованием функций массивов
-        return true
+        return this.cells.every((c) => c.sym !== "_" && c.sym !== " ")
     }
 
     move(index: number, sym: Sym<T>): boolean {
