@@ -40,13 +40,10 @@ export class BoardBalda extends Board<GameBalda> {
         )
     }
     
-    clone(): BoardBalda {
-        // TODO
-        // Функция должна вернуть копию объекта
-        // Если init, то дополнительно инициализируются
-        //  статические поля класса
-        return this
-    }
+    clone(init: boolean = false): BoardBalda {
+        const copy = this.cells.map((c) => c.clone())
+        return new BoardBalda(copy, init)
+    }   
 }
 
 export const BoardBaldaParam: BoardParam = {
