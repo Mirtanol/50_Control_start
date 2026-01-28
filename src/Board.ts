@@ -29,9 +29,10 @@ export abstract class Board<T extends GameType>{
     }
 
     move(index: number, sym: Sym<T>): boolean {
-        // TODO
-        // Если ячейка this.cell[index] занята - возвращает false
-        // Записывает в ячейку cell и возвращает true
+        if (index < 0 || index >= this.cells.length) return false
+        const curr = this.cells[index].sym
+        if (curr !== "_" && curr !== " ") return false
+        this.cells[index] = sym
         return true
     }
 
