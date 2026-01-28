@@ -19,11 +19,7 @@ export class Sym<T extends GameType> {
     }
 
     checkSym(sym: string): boolean {
-        // TODO
-        // Общая проверка для всех игр.
-        // Если длина строки равна 1 то true,
-        //  иначе false
-            return false
+        return sym.length === 1
     }
 
     get sym() {
