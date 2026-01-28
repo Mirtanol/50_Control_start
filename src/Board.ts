@@ -17,11 +17,9 @@ export abstract class Board<T extends GameType>{
         row?: number,
         col?: number,
     ) {
-        // TODO
-        // При наличии row или col 
-        //  инициализировать соответсвующие поля
-        // Инициализировать массив cells
-        this.cells = []
+        if (row != null) Board.row = row
+        if (col != null) Board.col = col
+        this.cells = [...str]
     }
 
     abstract clone(): Board<T>     
