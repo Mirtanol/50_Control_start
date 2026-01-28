@@ -68,10 +68,22 @@ export class Game<T extends GameType> {
     }
 
     toStep(step: number) {
-         // TODO
-        // Проверяет, что в steps есть элемент с индексом step,
-        //  если нет то возвращает false
-        // Делает current равным step и обновляет свойство cell в board
-        return true  
+        if (step < 0 || step >= this.steps.length) return false
+        this.current = step
+
+        const ctor = this.input.constructor as any
+        const hasXO = ctor?.x != null && ctor?.o != null && (this.input as any)._sym !== undefined
+        if (hasXO) {
+            let x = 0
+            let o = 0
+            for (const c of this.state.board.cells) {
+                if (c.sym === "X") x++
+                else if (c.sym === "0") o++
+            }
+            ;(this.input as any)._sym = x <= o ? ctor.x : ctor.o
+        }
+
+        GameVC.draw()
+        return true 
     }
 }
