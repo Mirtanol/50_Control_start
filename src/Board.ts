@@ -37,10 +37,7 @@ export abstract class Board<T extends GameType>{
     }
 
     status(): string { 
-        // TODO
-        // Если доска заполнена возвращает "Игра закончена"
-        //   если игра не закончена, строку "Идет игра".
-        return "Идет игра"
+        return this.isFill() ? "Игра закончена" : "Идет игра"
     }
 
 }
