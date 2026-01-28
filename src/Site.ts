@@ -97,8 +97,11 @@ export class Site {
     }
 
     save() {
-        // TODO
-        // сохраняет текущую игру в массив Games
+        this.games.push({
+            key: new Date().toLocaleString(),
+            game: this.game.clone(),
+        })
+        this.fillGames()
     }
 
     load(index: number) {
