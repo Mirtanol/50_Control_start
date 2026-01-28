@@ -7,10 +7,11 @@ export class InputBalda extends Input<GameBalda>{
     }
 
     get sym(): Sym<GameBalda> {
-        // TODO
-        //  возвращает символ из поля ввода        
-        return {} as Sym<GameBalda>
+        const el = document.getElementById("inputBalda") as HTMLInputElement | null
+        const val = el ? el.value : ""
+        return new Sym<GameBalda>(val.trim().charAt(0))
     }
+    
     move(): void {
         // TODO
         //  очищает поле ввода
