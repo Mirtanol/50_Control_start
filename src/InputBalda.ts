@@ -11,10 +11,9 @@ export class InputBalda extends Input<GameBalda>{
         const val = el ? el.value : ""
         return new Sym<GameBalda>(val.trim().charAt(0))
     }
-    
-    move(): void {
-        // TODO
-        //  очищает поле ввода
-    }
 
+    move(): void {
+        const el = document.getElementById("inputBalda") as HTMLInputElement | null
+        if (el) el.value = ""
+    }
 }
