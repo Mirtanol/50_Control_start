@@ -35,9 +35,12 @@ export class Game<T extends GameType> {
     }
 
     clone(): Game<T> {
-        // TODO
-        // Функция должна вернуть копию объекта
-        return this 
+        const stepsCopy = this.steps.map((s) => s.clone())
+
+        const inputCopy = Object.create(Object.getPrototypeOf(this.input)) as Input<T>
+        Object.assign(inputCopy as any, this.input as any)
+
+        return new Game(stepsCopy, inputCopy, { ...this.boardParam }, this.current)
     }
 
     move(index: number): boolean {
