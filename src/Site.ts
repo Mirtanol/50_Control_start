@@ -105,8 +105,10 @@ export class Site {
     }
 
     load(index: number) {
-        // TODO
-        // загружает игру по ее индексу в массиве
+        if (index < 0 || index >= this.games.length) return false
+        this.game = this.games[index].game.clone()
+        GameVC.load(this.game)
+        return true
     }
 
     keys(): string[] {
