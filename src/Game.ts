@@ -31,9 +31,7 @@ export class Game<T extends GameType> {
     }
 
     get state(): State<T> {
-        // TODO
-        // Сеттер должен возвращать текущее состояние игры
-        return this.steps[0]
+        return this.steps[this.current]
     }
 
     clone(): Game<T> {
