@@ -8,12 +8,33 @@ export class BoardTic extends Board<GameTic> {
         str: string | SymTic[] = "_________",
         init: boolean = true
     ) {
-        // TODO
-        // Если длина str!=9, то используется строка по умолчанию
-        // Вызывает родительский конструктор,
-        //  если init, то дополнительно инициализируются
-        //  статические поля класса
-        super({} as Sym<GameTic>[])
+        const def = "_________"
+        let cells: SymTic[]
+
+        if (typeof str === "string") {
+            let s = str
+            if (s.length !== 9) s = def
+            try {
+                cells = new Array(9)
+                for (let i = 0; i < 9; i++) cells[i] = new SymTic(s.charAt(i))
+            } catch {
+                cells = new Array(9)
+                for (let i = 0; i < 9; i++) cells[i] = new SymTic(def.charAt(i))
+            }
+        } else {
+            if (str.length !== 9) {
+                cells = new Array(9)
+                for (let i = 0; i < 9; i++) cells[i] = new SymTic(def.charAt(i))
+            } else {
+                cells = [...str]
+            }
+        }
+
+        super(
+            cells,
+            init ? BoardTicParam.row : undefined,
+            init ? BoardTicParam.col : undefined
+        )
     }
 
     clone(): BoardTic {
